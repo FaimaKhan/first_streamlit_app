@@ -1,4 +1,4 @@
-import streamlit
+ import streamlit
 import pandas
 import requests
 streamlit.title ('Talk Of The Town - Homestyle Cooking')
@@ -21,7 +21,7 @@ streamlit.header("Fruityvice Fruit Advice!")
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 #Just writes the data to screen
 streamlit.text(fruityvice_response.json())
-# write your own comment -what does the next line do? 
+# Normalize the data 
 fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
-# write your own comment - what does this do?
+# Present data in a tabular form
 streamlit.dataframe(fruityvice_normalized)

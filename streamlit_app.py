@@ -2,6 +2,7 @@ import streamlit
 import pandas
 import requests
 import snowflake.connector
+from urllib.error import URLError
 streamlit.title ('Talk Of The Town - Homestyle Cooking')
 streamlit.header('Breakfast Menu')
 streamlit.text('🥞Pancake🥞')
@@ -28,6 +29,8 @@ fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_c
 fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # Present data in a tabular form
 streamlit.dataframe(fruityvice_normalized)
+#Don't run anything past here - trying to debug
+streamlit.stop()
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 #my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
